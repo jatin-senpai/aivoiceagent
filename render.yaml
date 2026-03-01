@@ -13,7 +13,7 @@ services:
         fromService:
           type: web
           name: voice-agent-frontend
-          property: url
+          property: host
 
   # --- Frontend Service ---
   - type: web
@@ -27,7 +27,7 @@ services:
         fromService:
           type: web
           name: voice-agent-backend
-          property: url
+          property: host
     routes:
       - type: rewrite
         source: /*
