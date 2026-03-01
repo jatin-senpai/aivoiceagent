@@ -70,18 +70,39 @@ Select from pre-defined AI personas:
 ## 🔒 Security Note
 Environment variables (`.env`) are ignored by Git to protect API keys. Always use `.env.example` as a template for new deployments.
 
-## 🌐 Deployment (Render)
+## 🌐 Deployment (Render Free Tier)
 
-This project is configured for easy deployment on [Render](https://render.com) using **Blueprints**.
+Follow these steps to deploy both parts of your app for free.
 
-1. **Connect GitHub**: Log in to Render and click **New > Blueprint**.
-2. **Select Repository**: Select `jatin-senpai/aivoiceagent`.
-3. **Configure Environment**:
-   - Render will automatically detect the `render.yaml` file.
-   - You will be prompted to enter the `GROQ_API_KEY` for the backend service.
-4. **Deploy**: Click **Apply**.
+### 1. Deploy the Backend (Web Service)
+1. Log in to **Render** and click **New > Web Service**.
+2. Connect your GitHub repository.
+3. **Settings**:
+   - **Name**: `voice-agent-backend`
+   - **Root Directory**: `backend`
+   - **Runtime**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+4. **Environment Variables**:
+   - `GROQ_API_KEY`: Your actual Groq key.
+5. **Click Deploy**. Once live, copy your backend URL (e.g., `https://backend.onrender.com`).
 
-Render will automatically link the frontend and backend URLs for you. Once deployed, your voice agent will be live!
+### 2. Deploy the Frontend (Static Site)
+1. Click **New > Static Site**.
+2. Connect your GitHub repository.
+3. **Settings**:
+   - **Name**: `voice-agent-frontend`
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+4. **Environment Variables**:
+   - `VITE_BACKEND_URL`: Paste your Backend URL from Step 1.
+5. **Click Deploy**.
+
+### 3. Final Step (CORS)
+Go back to your **Backend Service > Environment**, and add:
+- `FRONTEND_URL`: Your new Frontend URL (e.g., `https://frontend.onrender.com`).
+This ensures your browser can safely talk to your backend.
 
 ## 📱 Browser Support
 
