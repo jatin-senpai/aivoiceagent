@@ -70,5 +70,27 @@ Select from pre-defined AI personas:
 ## 🔒 Security Note
 Environment variables (`.env`) are ignored by Git to protect API keys. Always use `.env.example` as a template for new deployments.
 
+## 🌐 Deployment (Render)
+
+This project is configured for easy deployment on [Render](https://render.com) using **Blueprints**.
+
+1. **Connect GitHub**: Log in to Render and click **New > Blueprint**.
+2. **Select Repository**: Select `jatin-senpai/aivoiceagent`.
+3. **Configure Environment**:
+   - Render will automatically detect the `render.yaml` file.
+   - You will be prompted to enter the `GROQ_API_KEY` for the backend service.
+4. **Deploy**: Click **Apply**.
+
+Render will automatically link the frontend and backend URLs for you. Once deployed, your voice agent will be live!
+
+## 📱 Browser Support
+
+| Browser | Supported |
+|---------|-----------|
+| Chrome | ✅ |
+| Edge | ✅ |
+| Firefox | ❌ (no SpeechRecognition) |
+| Safari | ⚠️ Partial |
+
 ---
 Built with ❤️ for real-time AI interaction.
