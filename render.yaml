@@ -11,23 +11,23 @@ services:
         sync: false # Set this in the Render Dashboard
       - key: FRONTEND_URL
         fromService:
-          type: static
+          type: web
           name: voice-agent-frontend
-          property: host
+          property: url
 
   # --- Frontend Service ---
-  - type: static
+  - type: web
     name: voice-agent-frontend
     env: static
     rootDir: frontend
     buildCommand: npm install && npm run build
-    publishDir: dist
+    staticPublishPath: dist
     envVars:
       - key: VITE_BACKEND_URL
         fromService:
           type: web
           name: voice-agent-backend
-          property: host
+          property: url
     routes:
       - type: rewrite
         source: /*
